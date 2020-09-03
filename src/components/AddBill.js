@@ -1,33 +1,33 @@
-import React, { useState } from 'react'
-import DatePicker from 'react-datepicker'
-import 'react-datepicker/dist/react-datepicker.css'
+import React, { useState } from "react";
+// import DatePicker from 'react-datepicker'
+// import 'react-datepicker/dist/react-datepicker.css'
 
-export default props => {
-  const [amount, setAmount] = useState(0)
-  const [category, setCategory] = useState(props.categories[0])
-  const [date, setDate] = useState(new Date().toISOString())
+export default (props) => {
+  const [amount, setAmount] = useState(0);
+  const [category, setCategory] = useState(props.categories[0]);
+  // const [date, setDate] = useState(new Date().toISOString())
 
-  const handleChangeAmount = e => {
-    setAmount(parseInt(e.target.value), 10)
-  }
+  const handleChangeAmount = (e) => {
+    setAmount(parseInt(e.target.value), 10);
+  };
 
-  const handleChangeCategory = e => {
-    setCategory(e.target.value)
-  }
+  const handleChangeCategory = (e) => {
+    setCategory(e.target.value);
+  };
 
-  const handleChangeDate = date => {
-    setDate(date)
-  }
+  // const handleChangeDate = date => {
+  //   setDate(date)
+  // }
 
-  const handleSubmit = e => {
-    e.preventDefault()
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!amount) {
-      alert('Please enter an amount')
-      return
+      alert("Please enter an amount");
+      return;
     }
 
-    props.onSubmit(amount, category || props.categories[0], date)
-  }
+    props.onSubmit(amount, category || props.categories[0]);
+  };
 
   return (
     <form className="h-100 w-full flex items-center justify-center font-sans">
@@ -50,12 +50,12 @@ export default props => {
                       <option key={index} value={value}>
                         {value}
                       </option>
-                    )
+                    );
                   })
-                : ''}
+                : ""}
             </select>
 
-            <DatePicker selected={date} onChange={handleChangeDate} />
+            {/* <DatePicker selected={date} onChange={handleChangeDate} /> */}
 
             <button
               className="flex-no-shrink p-2 border-2 rounded bg-teal text-white border-teal hover:text-white hover:bg-teal"
@@ -67,5 +67,5 @@ export default props => {
         </div>
       </div>
     </form>
-  )
-}
+  );
+};
